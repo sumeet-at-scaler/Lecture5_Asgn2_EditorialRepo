@@ -7,7 +7,7 @@ public class Client {
         int b = scn.nextInt();
 
         Adder adder = new Adder(a, b);
-        Thread t = new Thread(adder);
+        ScalerThread t = new ScalerThread(adder);
         t.start();
     }
 }
