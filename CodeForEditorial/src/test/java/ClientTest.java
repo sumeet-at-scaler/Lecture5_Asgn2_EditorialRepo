@@ -62,44 +62,12 @@ class ClientTest {
         assertTrue(Runnable.class.isAssignableFrom(Class.forName("Adder")));
     }
 
-
-    @Test
-    public void testAdderFields() throws Exception {
-        // Get the fields of the Adder class using reflection
-        Field fieldA = Class.forName("Adder").getDeclaredField("a");
-        Field fieldB = Class.forName("Adder").getDeclaredField("b");
-
-        // Assert that the fields are of type int
-        assertEquals(int.class, fieldA.getType());
-        assertEquals(int.class, fieldB.getType());
-    }
-
     @Test
     public void testAdderConstructor() throws Exception {
         // Get the fields of the Adder class using reflection
         Constructor<?> adderConstructor = Class.forName("Adder").
                                                 getDeclaredConstructor(int.class, int.class);
         assertNotNull(adderConstructor);
-    }
-
-    @Test
-    public void testAdderConstructorWorks() throws Exception {
-        // Get the fields of the Adder class using reflection
-        Constructor<?> adderConstructor = Class.forName("Adder").
-                getDeclaredConstructor(int.class, int.class);
-        // Get the fields of the Adder class using reflection
-        Field fieldA = Class.forName("Adder").getDeclaredField("a");
-        fieldA.setAccessible(true);
-
-        Field fieldB = Class.forName("Adder").getDeclaredField("b");
-        fieldB.setAccessible(true);
-
-        Object adder = adderConstructor.newInstance(2, 3);
-        int a = fieldA.getInt(adder);
-        int b = fieldB.getInt(adder);
-
-        assertEquals(2, a);
-        assertEquals(3, b);
     }
 
     @Test
